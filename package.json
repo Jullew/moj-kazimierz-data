@@ -1,0 +1,19 @@
+{
+  "name": "moj-kazimierz-data",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "data:import": "tsx data-engine/pipeline.ts",
+    "prepare:pages": "node scripts/prepare-pages.mjs"
+  },
+  "dependencies": {
+    "@turf/boolean-point-in-polygon": "^7.4.0",
+    "@turf/helpers": "^7.4.0",
+    "cheerio": "^1.2.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15"
+  }
+}

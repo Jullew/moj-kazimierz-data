@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "version": "20261116-de85306c28cf",
+  "generatedAt": "2026-11-16T13:30:13.039Z",
+  "places": "versions/20261116-de85306c28cf/places.json",
+  "events": "versions/20261116-de85306c28cf/events.json",
+  "diff": "versions/20261116-de85306c28cf/diff.json",
+  "counts": {
+    "places": 0,
+    "events": 4
+  }
+}

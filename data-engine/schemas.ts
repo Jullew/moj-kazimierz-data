@@ -1,0 +1,94 @@
+import { z } from 'zod';
+
+export const pointSchema = z.object({
+  type: z.literal('Point'),
+  coordinates: z.tuple([z.number(), z.number()]),
+});
+export const sourceSchema = z.object({
+  name: z.string().min(1),
+  url: z.string().url().optional(),
+  license: z.string().optional(),
+  attribution: z.string().optional(),
+  retrievedAt: z.string().datetime(),
+});
+export const placeSchema = z.object({
+  id: z.string().min(1),
+  name: z.string().min(1),
+  category: z.enum(['groceries', 'food', 'services', 'health', 'culture', 'other']),
+  address: z.string(),
+  coordinates: z.object({
+    latitude: z.number().min(-90).max(90),
+    longitude: z.number().min(-180).max(180),
+  }),
+  phone: z.string().optional(),
+  website: z.string().url().optional(),
+  openingHours: z.record(z.string(), z.unknown()).optional(),
+  lastVerified: z.string().date().optional(),
+  source: sourceSchema,
+  sourceIds: z.array(z.string()).min(1),
+  updatedAt: z.string().datetime(),
+  confidence: z.number().min(0).max(1),
+  geometry: pointSchema,
+});
+export const eventSchema = z
+  .object({
+    id: z.string().min(1),
+    title: z.string().min(1),
+    startsAt: z.string().datetime({ offset: true }),
+    endsAt: z.string().datetime({ offset: true }).optional(),
+    venue: z.string().optional(),
+    status: z.enum(['scheduled', 'cancelled', 'postponed']),
+    organizer: z.string().optional(),
+    sourceUrl: z.string().url(),
+    sourceUrls: z.array(z.string().url()).optional(),
+    sourceIds: z.array(z.string()).min(1),
+    source: sourceSchema,
+    updatedAt: z.string().datetime(),
+    confidence: z.number().min(0).max(1),
+    locationVerified: z.boolean(),
+    locationBasis: z.enum(['explicit', 'host-page']).optional(),
+  })
+  .refine(
+    (value) => !value.endsAt || Date.parse(value.endsAt) >= Date.parse(value.startsAt),
+    'Event end precedes start',
+  );
+export const dataSourceSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  url: z.string().url(),
+  license: z.string(),
+  access: z.enum(['api', 'html', 'manual']),
+  enabled: z.boolean(),
+  notes: z.string(),
+});
+export const versionSchema = z.object({
+  schemaVersion: z.literal(1),
+  version: z.string(),
+  generatedAt: z.string().datetime(),
+  places: z.string(),
+  events: z.string(),
+  diff: z.string().optional(),
+  counts: z.object({
+    places: z.number().int().nonnegative(),
+    events: z.number().int().nonnegative(),
+  }),
+});
+export const importRunSchema = z.object({
+  id: z.string(),
+  startedAt: z.string().datetime(),
+  completedAt: z.string().datetime().optional(),
+  sources: z.array(z.string()),
+  fetched: z.number().int().nonnegative(),
+  deduplicated: z.number().int().nonnegative().default(0),
+  accepted: z.number().int().nonnegative(),
+  rejected: z.number().int().nonnegative(),
+  reviewed: z.number().int().nonnegative(),
+  errors: z.array(z.string()),
+  status: z.enum(['running', 'succeeded', 'failed']),
+});
+
+export type EnginePlace = z.infer<typeof placeSchema>;
+export type EngineEvent = z.infer<typeof eventSchema>;
+export type DataSource = z.infer<typeof dataSourceSchema>;
+export type DataVersion = z.infer<typeof versionSchema>;
+export type ImportRun = z.infer<typeof importRunSchema>;

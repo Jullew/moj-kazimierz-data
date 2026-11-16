@@ -1,0 +1,59 @@
+name: Import and publish catalog
+
+on:
+  schedule:
+    # GitHub cron is UTC-only; these cover 04:00 Europe/Warsaw in CET and CEST.
+    - cron: '0 2,3 * * *'
+  workflow_dispatch:
+    inputs:
+      source:
+        description: Import source
+        type: choice
+        required: true
+        default: all
+        options: [all, osm, pok, pok-system]
+
+concurrency:
+  group: catalog-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Select scheduled run in Warsaw time
+        if: github.event_name == 'schedule'
+        id: schedule
+        run: |
+          if [ "$(TZ=Europe/Warsaw date +%H)" = "04" ]; then echo "run=true" >> "$GITHUB_OUTPUT"; else echo "run=false" >> "$GITHUB_OUTPUT"; fi
+      - name: Set public catalog URL
+        if: github.event_name == 'workflow_dispatch' || steps.schedule.outputs.run == 'true'
+        run: echo "DATA_PUBLIC_URL=https://${GITHUB_REPOSITORY_OWNER}.github.io/moj-kazimierz-data" >> "$GITHUB_ENV"
+      - name: Import source data
+        if: github.event_name == 'workflow_dispatch' || steps.schedule.outputs.run == 'true'
+        run: pnpm data:import -- --source=${{ inputs.source || 'all' }}
+      - name: Prepare public files
+        if: github.event_name == 'workflow_dispatch' || steps.schedule.outputs.run == 'true'
+        run: pnpm prepare:pages
+      - uses: actions/configure-pages@v5
+        if: github.event_name == 'workflow_dispatch' || steps.schedule.outputs.run == 'true'
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name == 'workflow_dispatch' || steps.schedule.outputs.run == 'true'
+        with:
+          path: dist
+      - uses: actions/deploy-pages@v4
+        if: github.event_name == 'workflow_dispatch' || steps.schedule.outputs.run == 'true'

@@ -1,0 +1,32 @@
+{
+  "places": [],
+  "events": [
+    {
+      "id": "pok-ptasia-pacynka",
+      "change": "added",
+      "fields": [
+        "id",
+        "title",
+        "startsAt",
+        "endsAt",
+        "venue",
+        "status",
+        "organizer",
+        "sourceUrl",
+        "sourceIds",
+        "source",
+        "confidence",
+        "locationVerified",
+        "locationBasis"
+      ]
+    },
+    {
+      "id": "pok-system-183-2026-11-18",
+      "change": "updated",
+      "fields": [
+        "sourceUrls",
+        "sourceIds"
+      ]
+    }
+  ]
+}
