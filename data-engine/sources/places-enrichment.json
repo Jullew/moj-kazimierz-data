@@ -1,0 +1,132 @@
+[
+  {
+    "curatedId": "place-details:pok-kazimierz",
+    "osmSourceId": "osm:way/184660278",
+    "address": "Główna 19, 41-215 Sosnowiec",
+    "phone": "+48 32 269 41 19",
+    "email": "kazimierz@pok.sosnowiec.pl",
+    "website": "https://www.pok.sosnowiec.pl/kazimierz/",
+    "description": "Dzielnicowy ośrodek kultury organizujący koncerty, spektakle, warsztaty i zajęcia dla mieszkańców.",
+    "highlights": ["Program wydarzeń i zapisy są dostępne na stronie POK."],
+    "detailsSources": [
+      {
+        "name": "Przystanek Otwartej Kultury — kontakt",
+        "url": "https://www.pok.sosnowiec.pl/kazimierz/kontakt/",
+        "license": "Publiczne informacje kontaktowe",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      },
+      {
+        "name": "Przystanek Otwartej Kultury — Kazimierz",
+        "url": "https://www.pok.sosnowiec.pl/kazimierz/",
+        "license": "Opis sparafrazowany ze strony źródłowej",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      }
+    ]
+  },
+  {
+    "curatedId": "place-details:park-jacka-kuronia",
+    "osmSourceId": "osm:relation/17366491",
+    "address": "Armii Krajowej 94, 41-215 Sosnowiec",
+    "phone": "+48 502 122 862",
+    "website": "https://www.mzuk.sosnowiec.pl/zoologia-i-botanika/index.html",
+    "description": "Leśny park o powierzchni około 35 ha ze stawem Leśna, ścieżkami spacerowymi i rowerowymi oraz atrakcjami dla rodzin.",
+    "highlights": [
+      "Na terenie parku są m.in. Mini Zoo, amfiteatr Muszelka, tężnia solankowa, skatepark i park linowy.",
+      "Bezpłatny parking."
+    ],
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3c/Park_im._Jacka_Kuronia%2C_Sosnowiec_2.jpg/960px-Park_im._Jacka_Kuronia%2C_Sosnowiec_2.jpg",
+      "title": "Park im. Jacka Kuronia, Sosnowiec 2.jpg",
+      "creator": "Fry72 (Karel Frydrýšek)",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Park_im._Jacka_Kuronia,_Sosnowiec_2.jpg"
+    },
+    "detailsSources": [
+      {
+        "name": "MZUK Sosnowiec — Park im. Jacka Kuronia",
+        "url": "https://www.mzuk.sosnowiec.pl/zoologia-i-botanika/index.html",
+        "license": "Opis sparafrazowany ze strony źródłowej",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      },
+      {
+        "name": "Miasto Sosnowiec — Raport o stanie gminy 2023",
+        "url": "https://www.sosnowiec.pl/wp-content/uploads/2024/07/Raport-za-2023_29.05.2024_ostateczny.pdf",
+        "license": "Fakty i dane publiczne; opis sparafrazowany",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      }
+    ]
+  },
+  {
+    "curatedId": "place-details:mini-zoo-kazimierz",
+    "osmSourceId": "osm:way/184686598",
+    "address": "Armii Krajowej 94, 41-215 Sosnowiec",
+    "website": "https://www.mzuk.sosnowiec.pl/zoologia-i-botanika/index.html",
+    "description": "Bezpłatne, plenerowe Mini Zoo w Parku im. Jacka Kuronia. MZUK opiekuje się tu m.in. danielami, kozami, owcami grzywiastymi i ptakami.",
+    "highlights": ["Wstęp wolny.", "Prosimy nie dokarmiać zwierząt."],
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/Minizoo%2C_Park_im._Jacka_Kuronia%2C_Sosnowiec.jpg/960px-Minizoo%2C_Park_im._Jacka_Kuronia%2C_Sosnowiec.jpg",
+      "title": "Minizoo, Park im. Jacka Kuronia, Sosnowiec.jpg",
+      "creator": "Fry72 (Karel Frydrýšek)",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Minizoo,_Park_im._Jacka_Kuronia,_Sosnowiec.jpg"
+    },
+    "detailsSources": [
+      {
+        "name": "MZUK Sosnowiec — Mini Zoo",
+        "url": "https://www.mzuk.sosnowiec.pl/zoologia-i-botanika/index.html",
+        "license": "Opis sparafrazowany ze strony źródłowej",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      }
+    ]
+  },
+  {
+    "curatedId": "place-details:amfiteatr-muszelka",
+    "osmSourceId": "osm:way/184685753",
+    "address": "Armii Krajowej 94, 41-215 Sosnowiec",
+    "website": "https://www.pok.sosnowiec.pl/kazimierz/",
+    "description": "Plenerowa scena w Parku im. Jacka Kuronia, wykorzystywana podczas koncertów i wydarzeń kulturalnych.",
+    "highlights": ["Wydarzenia organizowane w amfiteatrze sprawdzisz w programie POK."],
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/84/Sosnowiec-Kazimierz_G%C3%B3rniczy.Amfiteatr_w_Parku_Le%C5%9Bna..JPG/960px-Sosnowiec-Kazimierz_G%C3%B3rniczy.Amfiteatr_w_Parku_Le%C5%9Bna..JPG",
+      "title": "Sosnowiec-Kazimierz Górniczy. Amfiteatr w Parku Leśna..JPG",
+      "creator": "Aragorn25x",
+      "license": "CC BY-SA 3.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Sosnowiec-Kazimierz_G%C3%B3rniczy.Amfiteatr_w_Parku_Le%C5%9Bna..JPG"
+    },
+    "detailsSources": [
+      {
+        "name": "Przystanek Otwartej Kultury — Kazimierz",
+        "url": "https://www.pok.sosnowiec.pl/kazimierz/",
+        "license": "Opis sparafrazowany ze strony źródłowej",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      },
+      {
+        "name": "Miasto Sosnowiec — Raport o stanie gminy 2023",
+        "url": "https://www.sosnowiec.pl/wp-content/uploads/2024/07/Raport-za-2023_29.05.2024_ostateczny.pdf",
+        "license": "Fakty i dane publiczne; opis sparafrazowany",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      }
+    ]
+  },
+  {
+    "curatedId": "place-details:teznia-kuronia",
+    "osmSourceId": "osm:way/925966719",
+    "address": "Armii Krajowej 94, 41-215 Sosnowiec",
+    "description": "Tężnia solankowa położona na terenie Parku im. Jacka Kuronia.",
+    "photo": {
+      "url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6b/T%C4%99%C5%BCnia_solankowa%2C_Park_im._Jacka_Kuronia%2C_Sosnowiec_02.jpg/960px-T%C4%99%C5%BCnia_solankowa%2C_Park_im._Jacka_Kuronia%2C_Sosnowiec_02.jpg",
+      "title": "Tężnia solankowa, Park im. Jacka Kuronia, Sosnowiec 02.jpg",
+      "creator": "Fry72 (Karel Frydrýšek)",
+      "license": "CC BY-SA 4.0",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:T%C4%99%C5%BCnia_solankowa,_Park_im._Jacka_Kuronia,_Sosnowiec_02.jpg"
+    },
+    "detailsSources": [
+      {
+        "name": "Miasto Sosnowiec — Raport o stanie gminy 2023",
+        "url": "https://www.sosnowiec.pl/wp-content/uploads/2024/07/Raport-za-2023_29.05.2024_ostateczny.pdf",
+        "license": "Fakty i dane publiczne; opis sparafrazowany",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      }
+    ]
+  }
+]

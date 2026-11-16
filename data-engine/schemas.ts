@@ -11,6 +11,13 @@ export const sourceSchema = z.object({
   attribution: z.string().optional(),
   retrievedAt: z.string().datetime(),
 });
+export const placePhotoSchema = z.object({
+  url: z.string().url(),
+  title: z.string().min(1),
+  creator: z.string().min(1),
+  license: z.string().min(1),
+  sourceUrl: z.string().url(),
+});
 export const placeSchema = z.object({
   id: z.string().min(1),
   name: z.string().min(1),
@@ -21,7 +28,12 @@ export const placeSchema = z.object({
     longitude: z.number().min(-180).max(180),
   }),
   phone: z.string().optional(),
+  email: z.string().email().optional(),
   website: z.string().url().optional(),
+  description: z.string().optional(),
+  highlights: z.array(z.string().min(1)).optional(),
+  photo: placePhotoSchema.optional(),
+  detailsSources: sourceSchema.array().optional(),
   openingHours: z.record(z.string(), z.unknown()).optional(),
   lastVerified: z.string().date().optional(),
   source: sourceSchema,

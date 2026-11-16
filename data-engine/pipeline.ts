@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SOURCES } from './config.js';
 import { fetchOsmSource } from './sources/osm.js';
+import { enrichOsmPlaces } from './sources/places-enrichment.js';
 import { fetchPokEvents } from './sources/pok.js';
 import { fetchPokSystemEvents } from './sources/pok-system.js';
 import {
@@ -47,7 +48,7 @@ async function run() {
     if (wantPlaces) {
       try {
         const result = await fetchOsmSource();
-        places = result.places;
+        places = await enrichOsmPlaces(result.places);
         fetched += result.fetched;
         if (!places.length) throw new Error('OSM returned no candidate places');
       } catch (error) {

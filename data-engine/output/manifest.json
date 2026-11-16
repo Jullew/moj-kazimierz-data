@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "version": "20261116-03449a878735",
-  "generatedAt": "2026-11-16T14:11:07.537Z",
-  "places": "versions/20261116-03449a878735/places.json",
-  "events": "versions/20261116-03449a878735/events.json",
-  "diff": "versions/20261116-03449a878735/diff.json",
+  "version": "20261116-0f040c54f8d3",
+  "generatedAt": "2026-11-16T14:56:34.306Z",
+  "places": "versions/20261116-0f040c54f8d3/places.json",
+  "events": "versions/20261116-0f040c54f8d3/events.json",
+  "diff": "versions/20261116-0f040c54f8d3/diff.json",
   "counts": {
     "places": 82,
     "events": 4

@@ -68,7 +68,10 @@ function normalizeParsedOsm(
     if (!category) continue;
     const street = tags['addr:street'];
     const houseNumber = tags['addr:housenumber'];
-    const address = [street, houseNumber].filter(Boolean).join(' ');
+    const streetAddress = [street, houseNumber].filter(Boolean).join(' ');
+    const locality = [tags['addr:postcode'], tags['addr:city']].filter(Boolean).join(' ');
+    const address = [streetAddress, locality].filter(Boolean).join(', ');
+    const highlights = osmHighlights(tags);
     const sourceIds = [`osm:${element.type}/${element.id}`];
     const place: EnginePlace = {
       id: `osm-${element.type}-${element.id}`,
@@ -76,8 +79,19 @@ function normalizeParsedOsm(
       category,
       address,
       coordinates: { latitude, longitude },
-      ...(tags.phone ? { phone: tags.phone } : {}),
-      ...(safeUrl(tags.website) ? { website: safeUrl(tags.website) } : {}),
+      ...((tags.phone ?? tags['contact:phone'])
+        ? { phone: tags.phone ?? tags['contact:phone'] }
+        : {}),
+      ...((tags.email ?? tags['contact:email'])
+        ? { email: tags.email ?? tags['contact:email'] }
+        : {}),
+      ...(tags['description:pl'] ?? tags.description
+        ? { description: (tags['description:pl'] ?? tags.description)?.slice(0, 500) }
+        : {}),
+      ...(highlights.length ? { highlights } : {}),
+      ...(safeUrl(tags.website ?? tags['contact:website'])
+        ? { website: safeUrl(tags.website ?? tags['contact:website']) }
+        : {}),
       ...(tags.opening_hours ? parseOpeningHours(tags.opening_hours) : {}),
       lastVerified: retrievedAt.slice(0, 10),
       source: {
@@ -147,6 +161,19 @@ function categoryFor(tags: Record<string, string>) {
     return 'other';
   if (tags.shop || tags.amenity || tags.leisure || tags.tourism || tags.healthcare) return 'services';
   return undefined;
+}
+
+function osmHighlights(tags: Record<string, string>) {
+  const values: string[] = [];
+  if (tags.cuisine)
+    values.push(`Kuchnia: ${tags.cuisine.split(';').map((value) => value.replaceAll('_', ' ')).join(', ')}`);
+  if (tags.wheelchair === 'yes') values.push('Dostęp dla osób na wózkach');
+  if (tags.wheelchair === 'limited') values.push('Ograniczona dostępność dla osób na wózkach');
+  if (tags.takeaway === 'yes') values.push('Dostępne na wynos');
+  if (tags.delivery === 'yes') values.push('Dostawa');
+  if (tags.outdoor_seating === 'yes') values.push('Miejsca na zewnątrz');
+  if (tags.internet_access === 'wlan' || tags.internet_access === 'wifi') values.push('Wi-Fi');
+  return values;
 }
 
 function safeUrl(value?: string) {
