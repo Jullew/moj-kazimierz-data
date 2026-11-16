@@ -128,5 +128,142 @@
         "retrievedAt": "2026-11-16T00:00:00.000Z"
       }
     ]
+  },
+  {
+    "curatedId": "place-details:carrefour-market-glowna-22",
+    "osmSourceId": "osm:way/184629235",
+    "address": "Główna 22, 41-215 Sosnowiec",
+    "phone": "+48 32 298 05 43",
+    "website": "https://www.carrefour.pl/sklep/sosnowiec/glowna-22",
+    "openingHours": {
+      "monday": [{"open":"06:00","close":"21:00"}],
+      "tuesday": [{"open":"06:00","close":"21:00"}],
+      "wednesday": [{"open":"06:00","close":"21:00"}],
+      "thursday": [{"open":"06:00","close":"21:00"}],
+      "friday": [{"open":"06:00","close":"21:00"}],
+      "saturday": [{"open":"06:00","close":"21:00"}],
+      "sunday": [{"open":"09:00","close":"17:00"}]
+    },
+    "openingHoursNote": "Niedziela handlowa: 09:00–17:00. Godziny dla pozostałych niedziel nie są podane na stronie sklepu.",
+    "detailsSources": [{
+      "name": "Carrefour Market Sosnowiec Główna — godziny i kontakt",
+      "url": "https://www.carrefour.pl/sklep/sosnowiec/glowna-22",
+      "license": "Publiczne informacje o sklepie",
+      "retrievedAt": "2026-11-16T00:00:00.000Z"
+    }]
+  },
+  {
+    "curatedId": "place-details:lewiatan-armii-krajowej-69a",
+    "osmSourceId": "osm:way/375565160",
+    "address": "Armii Krajowej 69A, 41-215 Sosnowiec",
+    "website": "https://lewiatan.pl/znajdz-sklep/lewiatan-sosnowiec-armii-krajowej-69a",
+    "openingHours": {
+      "monday": [{"open":"06:30","close":"21:30"}],
+      "tuesday": [{"open":"06:30","close":"21:30"}],
+      "wednesday": [{"open":"06:30","close":"21:30"}],
+      "thursday": [{"open":"06:30","close":"21:30"}],
+      "friday": [{"open":"06:30","close":"21:30"}],
+      "saturday": [{"open":"06:30","close":"21:30"}]
+    },
+    "openingHoursNote": "Na stronie sklepu nie podano godzin dla niedzieli.",
+    "detailsSources": [{
+      "name": "Lewiatan Sosnowiec — godziny otwarcia",
+      "url": "https://lewiatan.pl/znajdz-sklep/lewiatan-sosnowiec-armii-krajowej-69a",
+      "license": "Publiczne informacje o sklepie",
+      "retrievedAt": "2026-11-16T00:00:00.000Z"
+    }]
+  },
+  {
+    "curatedId": "place-details:mini-zoo-hours",
+    "osmSourceId": "osm:way/184686598",
+    "openingHours": {
+      "monday": [{"open":"00:00","close":"24:00"}],
+      "tuesday": [{"open":"00:00","close":"24:00"}],
+      "wednesday": [{"open":"00:00","close":"24:00"}],
+      "thursday": [{"open":"00:00","close":"24:00"}],
+      "friday": [{"open":"00:00","close":"24:00"}],
+      "saturday": [{"open":"00:00","close":"24:00"}],
+      "sunday": [{"open":"00:00","close":"24:00"}]
+    },
+    "openingHoursNote": "Wstęp wolny; obiekt jest otwarty całodobowo, 7 dni w tygodniu.",
+    "detailsSources": [
+      {
+        "name": "MZUK Sosnowiec — Mini Zoo",
+        "url": "https://www.mzuk.sosnowiec.pl/zoologia-i-botanika/index.html",
+        "license": "Publiczna informacja zarządcy obiektu",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      },
+      {
+        "name": "MZUK Sosnowiec — regulamin Mini Zoo (BIP)",
+        "url": "https://www.bip.mzuk.sosnowiec.pl/imagesdb_skmbtc25317061410361-170614-0.pdf",
+        "license": "Publiczny regulamin obiektu",
+        "retrievedAt": "2026-11-16T00:00:00.000Z"
+      }
+    ]
+  },
+  {
+    "curatedId": "place-details:aldi-glowna-35",
+    "osmSourceId": "osm:way/1131600757",
+    "address": "Główna 35, 41-215 Sosnowiec",
+    "website": "https://www.aldi.pl/wyszukiwarka-sklepu/sosnowiec/glowna-35/3606091.html",
+    "description": "Sklep ALDI z piekarnią i udogodnieniami dla klientów.",
+    "highlights": ["Parking", "Dostęp bez barier", "Toaleta dla klientów", "Stacja piekarnicza"],
+    "openingHours": {
+      "monday": [{"open":"06:00","close":"22:00"}],
+      "tuesday": [{"open":"06:00","close":"22:00"}],
+      "wednesday": [{"open":"06:00","close":"22:00"}],
+      "thursday": [{"open":"06:00","close":"22:00"}],
+      "friday": [{"open":"06:00","close":"22:00"}],
+      "saturday": [{"open":"06:00","close":"22:00"}],
+      "sunday": null
+    },
+    "openingHoursNote": "Godziny specjalne w dni świąteczne są podawane na karcie sklepu.",
+    "detailsSources": [{
+      "name": "ALDI Sosnowiec, Główna 35 — godziny i udogodnienia",
+      "url": "https://www.aldi.pl/wyszukiwarka-sklepu/sosnowiec/glowna-35/3606091.html",
+      "license": "Publiczne informacje o sklepie",
+      "retrievedAt": "2026-11-16T00:00:00.000Z"
+    }]
+  },
+  {
+    "curatedId": "place-details:biedronka-glowna-17b",
+    "osmSourceId": "osm:way/368346112",
+    "address": "Główna 17B, 41-215 Sosnowiec",
+    "website": "https://www.biedronka.pl/pl/sklepy/shop%2Cid%2C2488",
+    "highlights": ["Przy sklepie działa recyklomat."],
+    "openingHours": {
+      "monday": [{"open":"05:00","close":"23:00"}],
+      "tuesday": [{"open":"05:00","close":"23:00"}],
+      "wednesday": [{"open":"05:00","close":"23:00"}],
+      "thursday": [{"open":"05:00","close":"23:00"}],
+      "friday": [{"open":"05:00","close":"23:00"}],
+      "saturday": [{"open":"05:00","close":"23:00"}],
+      "sunday": null
+    },
+    "openingHoursNote": "Biedronka oznacza godziny na stronie jako orientacyjne; w niedziele sklep jest zamknięty.",
+    "detailsSources": [{
+      "name": "Biedronka Sosnowiec, Główna 17B — godziny otwarcia",
+      "url": "https://www.biedronka.pl/pl/sklepy/shop%2Cid%2C2488",
+      "license": "Publiczne informacje o sklepie",
+      "retrievedAt": "2026-11-16T00:00:00.000Z"
+    }]
+  },
+  {
+    "curatedId": "place-details:lina-adrena",
+    "osmSourceId": "osm:way/991792707",
+    "address": "Armii Krajowej 86, 41-215 Sosnowiec",
+    "website": "https://parklinowysosnowiec.pl/",
+    "description": "Park linowy w Parku im. Jacka Kuronia z trasami o różnym poziomie trudności dla dzieci i dorosłych.",
+    "highlights": [
+      "Pięć tras: Generał, Oficer, Sierżant, Starszy Szeregowy i Kapral.",
+      "Trasy mają od 16 do 20 przeszkód; wysokość i minimalny wzrost zależą od trasy."
+    ],
+    "openingHoursNote": "Park działa sezonowo. Operator publikuje aktualne miesiące i godziny na swojej stronie.",
+    "detailsSources": [{
+      "name": "Lina Adrena — trasy, godziny sezonowe i dojazd",
+      "url": "https://parklinowysosnowiec.pl/",
+      "license": "Publiczne informacje operatora",
+      "retrievedAt": "2026-11-16T00:00:00.000Z"
+    }]
   }
 ]

@@ -113,35 +113,65 @@ function normalizeParsedOsm(
 }
 
 function parseOpeningHours(value: string) {
-  const days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
-  const names = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+  const dayCodes = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+  const dayNames = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   const result: Record<string, { open: string; close: string }[] | null> = {};
-  for (const rule of value.split(';')) {
-    const match = rule
-      .trim()
-      .match(
-        /^(Mo|Tu|We|Th|Fr|Sa|Su)(?:-(Mo|Tu|We|Th|Fr|Sa|Su))?(?:,(Mo|Tu|We|Th|Fr|Sa|Su))*\s+(\d{2}:\d{2})-(\d{2}:\d{2})$/,
-      );
-    if (!match || match[5] === '24:00') continue;
-    const selector = match[0].split(/\s+/)[0];
-    const time =
-      selector === undefined ? undefined : rule.trim().match(/(\d{2}:\d{2})-(\d{2}:\d{2})$/);
-    if (!time) continue;
-    const dayToken = rule.trim().split(/\s+/)[0];
-    const dayNames: string[] = [];
-    for (const range of dayToken.split(',')) {
-      const [from, to = from] = range.split('-');
-      const start = days.indexOf(from);
-      const end = days.indexOf(to);
+  const allDay = [{ open: '00:00', close: '24:00' }];
+  let note: string | undefined;
+
+  if (value.trim() === '24/7') {
+    for (const day of dayNames) result[day] = allDay;
+    return { openingHours: result };
+  }
+
+  for (const rawRule of value.split(';')) {
+    const rule = rawRule.trim();
+    if (!rule) continue;
+    const separator = rule.search(/\s/);
+    if (separator < 0) continue;
+    const daySelector = rule.slice(0, separator);
+    const timeRules = rule.slice(separator).match(/\d{2}:\d{2}-\d{2}:\d{2}/g);
+
+    if (/\bPH\s+off\b/.test(rule)) note = 'W dni świąteczne obiekt jest zamknięty.';
+    const selectedDays = new Set<string>();
+    for (const part of daySelector.split(',')) {
+      if (part === 'PH') {
+        note ??= 'Godziny w święta mogą się różnić.';
+        continue;
+      }
+      const [from, to = from] = part.split('-');
+      const start = dayCodes.indexOf(from);
+      const end = dayCodes.indexOf(to);
       if (start < 0 || end < 0) continue;
       for (let index = start; ; index = (index + 1) % 7) {
-        dayNames.push(names[index]);
+        selectedDays.add(dayNames[index]);
         if (index === end) break;
       }
     }
-    for (const day of dayNames) (result[day] ??= []).push({ open: time[1], close: time[2] });
+
+    if (!timeRules?.length) {
+      if (/\boff\b/.test(rule)) for (const day of selectedDays) result[day] = null;
+      continue;
+    }
+    for (const day of selectedDays) {
+      const intervals = result[day] ?? (result[day] = []);
+      if (intervals === null) result[day] = [];
+      const target = result[day] as { open: string; close: string }[];
+      for (const timeRule of timeRules) {
+        const [open, close] = timeRule.split('-');
+        const sameStart = target.find((item) => item.open === open);
+        if (sameStart) {
+          const minutes = (time: string) => time === '24:00' ? 1440 : Number(time.slice(0, 2)) * 60 + Number(time.slice(3));
+          if (minutes(close) > minutes(sameStart.close)) sameStart.close = close;
+        } else {
+          target.push({ open, close });
+        }
+      }
+    }
   }
-  return Object.keys(result).length ? { openingHours: result } : {};
+  return Object.keys(result).length
+    ? { openingHours: result, ...(note ? { openingHoursNote: note } : {}) }
+    : {};
 }
 
 function categoryFor(tags: Record<string, string>) {
