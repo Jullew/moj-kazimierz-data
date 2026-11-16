@@ -45,6 +45,8 @@ jobs:
         run: echo "DATA_PUBLIC_URL=https://${GITHUB_REPOSITORY_OWNER}.github.io/moj-kazimierz-data" >> "$GITHUB_ENV"
       - name: Import source data
         if: github.event_name == 'workflow_dispatch' || steps.schedule.outputs.run == 'true'
+        env:
+          OVERPASS_API_KEY: ${{ secrets.OVERPASS_API_KEY }}
         run: pnpm data:import -- --source=${{ inputs.source || 'all' }}
       - name: Prepare public files
         if: github.event_name == 'workflow_dispatch' || steps.schedule.outputs.run == 'true'

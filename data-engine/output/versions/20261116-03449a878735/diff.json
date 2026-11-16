@@ -1,0 +1,108 @@
+{
+  "places": [
+    {
+      "id": "osm-node-1557331675",
+      "change": "added",
+      "fields": [
+        "id",
+        "name",
+        "category",
+        "address",
+        "coordinates",
+        "source",
+        "sourceIds",
+        "confidence",
+        "geometry"
+      ]
+    },
+    {
+      "id": "osm-node-1557355603",
+      "change": "added",
+      "fields": [
+        "id",
+        "name",
+        "category",
+        "address",
+        "coordinates",
+        "source",
+        "sourceIds",
+        "confidence",
+        "geometry"
+      ]
+    },
+    {
+      "id": "osm-way-169010422",
+      "change": "updated",
+      "fields": [
+        "sourceIds"
+      ]
+    },
+    {
+      "id": "osm-way-184660278",
+      "change": "updated",
+      "fields": [
+        "sourceIds"
+      ]
+    },
+    {
+      "id": "osm-way-925966719",
+      "change": "updated",
+      "fields": [
+        "sourceIds"
+      ]
+    },
+    {
+      "id": "osm-way-925966720",
+      "change": "added",
+      "fields": [
+        "id",
+        "name",
+        "category",
+        "address",
+        "coordinates",
+        "source",
+        "sourceIds",
+        "confidence",
+        "geometry"
+      ]
+    },
+    {
+      "id": "osm-relation-2030575",
+      "change": "updated",
+      "fields": [
+        "sourceIds"
+      ]
+    },
+    {
+      "id": "osm-relation-2250833",
+      "change": "added",
+      "fields": [
+        "id",
+        "name",
+        "category",
+        "address",
+        "coordinates",
+        "source",
+        "sourceIds",
+        "confidence",
+        "geometry"
+      ]
+    },
+    {
+      "id": "osm-relation-3781377",
+      "change": "added",
+      "fields": [
+        "id",
+        "name",
+        "category",
+        "address",
+        "coordinates",
+        "source",
+        "sourceIds",
+        "confidence",
+        "geometry"
+      ]
+    }
+  ],
+  "events": []
+}

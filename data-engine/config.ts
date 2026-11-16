@@ -9,7 +9,7 @@ export const SOURCES: DataSource[] = [
     access: 'api',
     enabled: true,
     notes:
-      'Overpass API with a small bounded query and failover. Public Overpass instances have separate usage terms; OSM data reuse requires attribution and ODbL compliance.',
+      'Daily named-place query through Overpass.ch (OVERPASS_API_KEY Actions secret), with public endpoint failover. Covers shops, amenities, leisure, tourism and healthcare in an approximate 2.3 km Kazimierz catchment; OSM reuse requires attribution and ODbL compliance.',
   },
   {
     id: 'pok-kazimierz',

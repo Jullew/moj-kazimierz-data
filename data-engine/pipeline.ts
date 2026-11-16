@@ -185,6 +185,7 @@ async function publish(input: {
       'Previous catalog is missing; partial import aborted. Run a full import first.',
     );
   }
+  const importedPlaces = mergePlaces(input.places);
   const mergedPlaces = mergePlaces([
     ...(previousPlaces.success ? previousPlaces.data : []),
     ...input.places,
@@ -197,10 +198,12 @@ async function publish(input: {
     ...(previousEvents.success ? previousEvents.data : []),
     ...uniquePublishableEvents,
   ]);
-  const deduplicated = Math.max(
+  const eventDeduplicated = Math.max(
     candidateDuplicates,
     publishableEvents.length - Math.max(0, mergedEvents.length - previousEventCount),
   );
+  const placeDeduplicated = input.places.length - importedPlaces.length;
+  const deduplicated = eventDeduplicated + placeDeduplicated;
   const rejected = input.fetched - input.places.length - publishableEvents.length;
   const reviewed =
     mergedPlaces.filter((place) => place.confidence < 0.72).length +
@@ -256,7 +259,7 @@ async function publish(input: {
     counts: { places: validPlaces.length, events: validEvents.length },
   });
   const counts = {
-    accepted: input.places.length + uniquePublishableEvents.length,
+    accepted: importedPlaces.length + uniquePublishableEvents.length,
     rejected,
     reviewed,
     deduplicated,

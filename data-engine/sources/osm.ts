@@ -1,11 +1,11 @@
 import { booleanPointInPolygon } from '@turf/boolean-point-in-polygon';
 import { point, polygon } from '@turf/helpers';
 import { z } from 'zod';
-import { MAX_RESPONSE_BYTES, REQUEST_TIMEOUT_MS, USER_AGENT } from '../config.js';
+import { MAX_RESPONSE_BYTES, USER_AGENT } from '../config.js';
 import { placeSchema, type EnginePlace } from '../schemas.js';
 
-// Approximate locality geofence centered on the OSM place=suburb feature.
-// It is deliberately conservative and kept as a fixture so replacement with an official district boundary is simple.
+// Approximate Kazimierz catchment centered on its OSM neighbourhood node.
+// OSM has no polygon boundary for this neighbourhood, so this filter remains a documented approximation.
 export const KAZIMIERZ_GEOFENCE = polygon([
   [
     [19.216, 50.273],
@@ -136,9 +136,16 @@ function categoryFor(tags: Record<string, string>) {
     return tags.shop === 'chemist' ? 'health' : 'groceries';
   if (/restaurant|cafe|fast_food|bar|food_court|ice_cream/.test(text)) return 'food';
   if (/doctors|dentist|pharmacy|clinic|hospital|healthcare/.test(text)) return 'health';
-  if (/theatre|arts_centre|community_centre|library|museum|cinema/.test(text)) return 'culture';
-  if (/fitness_centre|sports_centre|park|playground|pitch|swimming_pool/.test(text)) return 'other';
-  if (tags.shop || tags.amenity || tags.leisure) return 'services';
+  if (/theatre|arts_centre|community_centre|library|museum|cinema|place_of_worship/.test(text))
+    return 'culture';
+  if (/attraction|artwork|theme_park|zoo|information/.test(tags.tourism ?? '')) return 'culture';
+  if (
+    /fitness_centre|sports_centre|park|playground|pitch|swimming_pool|garden|nature_reserve|stadium|track/.test(
+      text,
+    )
+  )
+    return 'other';
+  if (tags.shop || tags.amenity || tags.leisure || tags.tourism || tags.healthcare) return 'services';
   return undefined;
 }
 
@@ -154,22 +161,28 @@ function safeUrl(value?: string) {
 
 export async function fetchOsmSource(
   fetcher: typeof fetch = fetch,
-  timeoutMs = REQUEST_TIMEOUT_MS,
+  timeoutMs = 60_000,
 ): Promise<{ places: EnginePlace[]; fetched: number }> {
   const query =
-    '[out:json][timeout:12];(nwr(around:2300,50.29636,19.24433)[shop];nwr(around:2300,50.29636,19.24433)[amenity~"restaurant|cafe|fast_food|bar|doctors|dentist|pharmacy|clinic|community_centre|library"];nwr(around:2300,50.29636,19.24433)[leisure~"park|sports_centre|fitness_centre|playground"];);out center tags;';
+    '[out:json][timeout:50];(nwr(around:2300,50.29636,19.24433)[name][shop];nwr(around:2300,50.29636,19.24433)[name][amenity];nwr(around:2300,50.29636,19.24433)[name][leisure];nwr(around:2300,50.29636,19.24433)[name][tourism];nwr(around:2300,50.29636,19.24433)[name][healthcare];);out center tags;';
+  const apiKey = process.env.OVERPASS_API_KEY;
   const endpoints = [
-    'https://overpass-api.de/api/interpreter',
-    'https://overpass.private.coffee/api/interpreter',
+    ...(apiKey ? [{ url: 'https://api.overpass.ch/v1/interpreter', apiKey }] : []),
+    { url: 'https://overpass-api.de/api/interpreter' },
+    { url: 'https://overpass.private.coffee/api/interpreter' },
   ];
   let lastError: unknown;
   for (const endpoint of endpoints) {
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), timeoutMs);
     try {
-      const response = await fetcher(endpoint, {
+      const response = await fetcher(endpoint.url, {
         method: 'POST',
-        headers: { 'content-type': 'application/x-www-form-urlencoded', 'user-agent': USER_AGENT },
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'user-agent': USER_AGENT,
+          ...(endpoint.apiKey ? { 'X-API-Key': endpoint.apiKey } : {}),
+        },
         body: new URLSearchParams({ data: query }),
         signal: controller.signal,
       });
@@ -192,7 +205,7 @@ export async function fetchOsmSource(
 
 export async function fetchOsmPlaces(
   fetcher: typeof fetch = fetch,
-  timeoutMs = REQUEST_TIMEOUT_MS,
+  timeoutMs = 60_000,
 ): Promise<EnginePlace[]> {
   return (await fetchOsmSource(fetcher, timeoutMs)).places;
 }

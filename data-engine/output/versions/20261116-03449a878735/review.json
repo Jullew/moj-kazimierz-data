@@ -1,0 +1,1938 @@
+[
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-1557324307",
+      "name": "PKO BP",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2934841,
+        "longitude": 19.2406372
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/1557324307",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/1557324307"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2406372,
+          50.2934841
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-1557352301",
+      "name": "Kwiaciarnia Iwona",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2979234,
+        "longitude": 19.2319244
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/1557352301",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/1557352301"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2319244,
+          50.2979234
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-1557354565",
+      "name": "Przychodnia Rejonowa",
+      "category": "health",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2916774,
+        "longitude": 19.2401313
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/1557354565",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/1557354565"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2401313,
+          50.2916774
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-1951823763",
+      "name": "Rybka",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.301991,
+        "longitude": 19.2440858
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/1951823763",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/1951823763"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2440858,
+          50.301991
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-3765937823",
+      "name": "Szlaki Rowerowe Sosnowca",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2979806,
+        "longitude": 19.2389757
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/3765937823",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/3765937823"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2389757,
+          50.2979806
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-3766118276",
+      "name": "Szlaki Rowerowe Sosnowca",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2878083,
+        "longitude": 19.2219673
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/3766118276",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/3766118276"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2219673,
+          50.2878083
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-4975469191",
+      "name": "Stańczyk Galeria Alkoholi",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2939306,
+        "longitude": 19.241326
+      },
+      "website": "https://www.facebook.com/Galeria-alkoholi-Sta%C5%84czyk-794470490593782/",
+      "openingHours": {
+        "monday": [
+          {
+            "open": "06:00",
+            "close": "23:00"
+          }
+        ],
+        "tuesday": [
+          {
+            "open": "06:00",
+            "close": "23:00"
+          }
+        ],
+        "wednesday": [
+          {
+            "open": "06:00",
+            "close": "23:00"
+          }
+        ],
+        "thursday": [
+          {
+            "open": "06:00",
+            "close": "23:00"
+          }
+        ],
+        "friday": [
+          {
+            "open": "06:00",
+            "close": "23:00"
+          }
+        ],
+        "saturday": [
+          {
+            "open": "06:00",
+            "close": "23:00"
+          }
+        ],
+        "sunday": [
+          {
+            "open": "06:00",
+            "close": "23:00"
+          }
+        ]
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/4975469191",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/4975469191"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.241326,
+          50.2939306
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-5595070638",
+      "name": "Delikatesy po sąsiedzku",
+      "category": "groceries",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2852217,
+        "longitude": 19.2673146
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/5595070638",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/5595070638"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2673146,
+          50.2852217
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-6323333173",
+      "name": "Król",
+      "category": "groceries",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2925919,
+        "longitude": 19.237029
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/6323333173",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/6323333173"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.237029,
+          50.2925919
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-7471985915",
+      "name": "Biblioteka Publiczna Miejska nr 11",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2903903,
+        "longitude": 19.2688061
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/7471985915",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/7471985915"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2688061,
+          50.2903903
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-9164251578",
+      "name": "Auto Serwis Tomasz Jatkowski",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2858627,
+        "longitude": 19.2295694
+      },
+      "phone": "+48 50 148 38 60",
+      "openingHours": {
+        "monday": [
+          {
+            "open": "08:00",
+            "close": "17:00"
+          }
+        ],
+        "tuesday": [
+          {
+            "open": "08:00",
+            "close": "17:00"
+          }
+        ],
+        "wednesday": [
+          {
+            "open": "08:00",
+            "close": "17:00"
+          }
+        ],
+        "thursday": [
+          {
+            "open": "08:00",
+            "close": "17:00"
+          }
+        ],
+        "friday": [
+          {
+            "open": "08:00",
+            "close": "17:00"
+          }
+        ]
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/9164251578",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/9164251578"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2295694,
+          50.2858627
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-9629030968",
+      "name": "Isofarm",
+      "category": "health",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2933227,
+        "longitude": 19.2395778
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/9629030968",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/9629030968"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2395778,
+          50.2933227
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-9724844390",
+      "name": "Żabka",
+      "category": "groceries",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3160003,
+        "longitude": 19.2487815
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/9724844390",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/9724844390"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2487815,
+          50.3160003
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-9790934348",
+      "name": "Biblioteczka",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2977741,
+        "longitude": 19.2405272
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/9790934348",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/9790934348"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2405272,
+          50.2977741
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-9890264363",
+      "name": "Ślimak",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3021439,
+        "longitude": 19.2437208
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/9890264363",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/9890264363"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2437208,
+          50.3021439
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-10933855810",
+      "name": "Sklep spożywczy",
+      "category": "groceries",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2827173,
+        "longitude": 19.262233
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/10933855810",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/10933855810"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.262233,
+          50.2827173
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-11129253611",
+      "name": "Optyk Ottica",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2931328,
+        "longitude": 19.2385319
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/11129253611",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/11129253611"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2385319,
+          50.2931328
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-11129253612",
+      "name": "Maciuś",
+      "category": "groceries",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2932121,
+        "longitude": 19.2387586
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/11129253612",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/11129253612"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2387586,
+          50.2932121
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-11725895904",
+      "name": "Żyrafa",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3027911,
+        "longitude": 19.2435843
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/11725895904",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/11725895904"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2435843,
+          50.3027911
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-11741411047",
+      "name": "S-Gaz",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2964363,
+        "longitude": 19.2415021
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/11741411047",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/11741411047"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2415021,
+          50.2964363
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-13806713224",
+      "name": "MB Studio Urody",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2938751,
+        "longitude": 19.2417355
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/13806713224",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/13806713224"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2417355,
+          50.2938751
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-13806713225",
+      "name": "Kubik Delikatesy",
+      "category": "groceries",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.293866,
+        "longitude": 19.2416511
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/13806713225",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/13806713225"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2416511,
+          50.293866
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-node-13806874589",
+      "name": "Lombard",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2926429,
+        "longitude": 19.2371242
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/node/13806874589",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:node/13806874589"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2371242,
+          50.2926429
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-114967329",
+      "name": "KS \"UNIA\" Strzemieszyce",
+      "category": "other",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3052787,
+        "longitude": 19.2682083
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/114967329",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/114967329"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2682083,
+          50.3052787
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-123313331",
+      "name": "Kazik Center eko wash",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2928783,
+        "longitude": 19.2386298
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/123313331",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/123313331"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2386298,
+          50.2928783
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-150619640",
+      "name": "Szkoła Podstawowa nr 2 im. Marszałka Józefa Piłsudskiego",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3057291,
+        "longitude": 19.2714613
+      },
+      "website": "http://sp2dg.edupage.org/",
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/150619640",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/150619640"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2714613,
+          50.3057291
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-171129225",
+      "name": "Jednostka Ratowniczo-Gaśnicza Państwowej Straży Pożarnej nr 2 w Sosnowcu",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2924235,
+        "longitude": 19.2221302
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/171129225",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/171129225"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2221302,
+          50.2924235
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-171129245",
+      "name": "Shell",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2920702,
+        "longitude": 19.2173003
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/171129245",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/171129245"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2173003,
+          50.2920702
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-184618619",
+      "name": "C.T. Serwis",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2940757,
+        "longitude": 19.2424638
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/184618619",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/184618619"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2424638,
+          50.2940757
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-184685753",
+      "name": "Amfiteatr \"Muszelka\"",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2982301,
+        "longitude": 19.2421986
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/184685753",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/184685753"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2421986,
+          50.2982301
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-184685994",
+      "name": "SkatePark",
+      "category": "other",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2996342,
+        "longitude": 19.2404056
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/184685994",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/184685994"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2404056,
+          50.2996342
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-184686598",
+      "name": "Mini Zoo",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3003251,
+        "longitude": 19.2439527
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/184686598",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/184686598"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2439527,
+          50.3003251
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-216685331",
+      "name": "Zew Kazimierz",
+      "category": "other",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2876684,
+        "longitude": 19.2664708
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/216685331",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/216685331"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2664708,
+          50.2876684
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-224355361",
+      "name": "Szkółka Drzew i Krzewów Alicja",
+      "category": "other",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2907902,
+        "longitude": 19.2670783
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/224355361",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/224355361"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2670783,
+          50.2907902
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-337045191",
+      "name": "Kościół Najświętszego Ciała i Krwi Chrystusa",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2954836,
+        "longitude": 19.2470678
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/337045191",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/337045191"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2470678,
+          50.2954836
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-373081529",
+      "name": "Muszelka",
+      "category": "food",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2979241,
+        "longitude": 19.241965
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/373081529",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/373081529"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.241965,
+          50.2979241
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-420011564",
+      "name": "Zegar słoneczny",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2762057,
+        "longitude": 19.2506143
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/420011564",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/420011564"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2506143,
+          50.2762057
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-481076938",
+      "name": "Strefa Aktywności Mieszkańca",
+      "category": "other",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2927452,
+        "longitude": 19.2440163
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/481076938",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/481076938"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2440163,
+          50.2927452
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-747951760",
+      "name": "Szkoła Podstawowa nr 35 im. Armii Krajowej",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2815425,
+        "longitude": 19.2282745
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/747951760",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/747951760"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2282745,
+          50.2815425
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-751272295",
+      "name": "Szkoła Podstawowa nr 32",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2967259,
+        "longitude": 19.2395992
+      },
+      "phone": "+48 32 263 43 01",
+      "website": "https://sp32sosnowiec.edupage.org/",
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/751272295",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/751272295"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2395992,
+          50.2967259
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-770408324",
+      "name": "Przedszkole Miejskie nr 31",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.290227,
+        "longitude": 19.268727
+      },
+      "website": "http://pm31sosnowiec.edupage.org/",
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/770408324",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/770408324"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.268727,
+          50.290227
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-770408325",
+      "name": "Przedszkole Miejskie nr 33",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2922494,
+        "longitude": 19.2410351
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/770408325",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/770408325"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2410351,
+          50.2922494
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-789938929",
+      "name": "KS ZEW Sosnowiec",
+      "category": "other",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2878612,
+        "longitude": 19.2666242
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/789938929",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/789938929"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2666242,
+          50.2878612
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-925966719",
+      "name": "Tężnia Solankowa",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3018661,
+        "longitude": 19.244209
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/925966719",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/925966719",
+        "osm:way/925966720"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.244209,
+          50.3018661
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-991792707",
+      "name": "Lina Adrena",
+      "category": "other",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2988663,
+        "longitude": 19.2405373
+      },
+      "phone": "+48 791 220 868",
+      "website": "https://parklinowysosnowiec.pl/",
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/991792707",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/991792707"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2405373,
+          50.2988663
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-1000292066",
+      "name": "Łowisko Leśny",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3011523,
+        "longitude": 19.2435823
+      },
+      "phone": "+48 504 864 029",
+      "website": "https://kazimierz-juliusz.pzw.org.pl/",
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/1000292066",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/1000292066"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2435823,
+          50.3011523
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-1000292068",
+      "name": "Łowisko Smug",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3050807,
+        "longitude": 19.2413616
+      },
+      "phone": "+48 504 864 029",
+      "website": "https://kazimierz-juliusz.pzw.org.pl/",
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/1000292068",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/1000292068"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2413616,
+          50.3050807
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-1150421625",
+      "name": "Wypożyczalnia Pojazdów",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2983038,
+        "longitude": 19.2388804
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/1150421625",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/1150421625"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2388804,
+          50.2983038
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-1263820012",
+      "name": "Dino Park",
+      "category": "culture",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3024437,
+        "longitude": 19.2412225
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/1263820012",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/1263820012"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2412225,
+          50.3024437
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-1264073453",
+      "name": "Park linowy",
+      "category": "other",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2992939,
+        "longitude": 19.2409551
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/1264073453",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/1264073453"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2409551,
+          50.2992939
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-way-1577533469",
+      "name": "AM AM Kebab",
+      "category": "food",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.2938522,
+        "longitude": 19.2412863
+      },
+      "openingHours": {
+        "monday": [
+          {
+            "open": "11:00",
+            "close": "21:00"
+          }
+        ],
+        "tuesday": [
+          {
+            "open": "11:00",
+            "close": "21:00"
+          }
+        ],
+        "wednesday": [
+          {
+            "open": "11:00",
+            "close": "21:00"
+          }
+        ],
+        "thursday": [
+          {
+            "open": "11:00",
+            "close": "21:00"
+          }
+        ],
+        "friday": [
+          {
+            "open": "11:00",
+            "close": "21:00"
+          }
+        ],
+        "saturday": [
+          {
+            "open": "11:00",
+            "close": "22:00"
+          }
+        ],
+        "sunday": [
+          {
+            "open": "12:00",
+            "close": "21:00"
+          }
+        ]
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/way/1577533469",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:way/1577533469"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2412863,
+          50.2938522
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-relation-2030575",
+      "name": "Szkoła Podstawowa nr 2 im.Marszałka Józefa Piłsudskieg",
+      "category": "services",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3057291,
+        "longitude": 19.2714613
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/relation/2030575",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:relation/2030575",
+        "osm:relation/3781377"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2714613,
+          50.3057291
+        ]
+      }
+    }
+  },
+  {
+    "type": "place",
+    "reason": "low-confidence or approximate locality data",
+    "record": {
+      "id": "osm-relation-17366491",
+      "name": "Park imienia Jacka Kuronia",
+      "category": "other",
+      "address": "",
+      "coordinates": {
+        "latitude": 50.3005905,
+        "longitude": 19.2424674
+      },
+      "lastVerified": "2026-11-16",
+      "source": {
+        "name": "OpenStreetMap",
+        "url": "https://www.openstreetmap.org/relation/17366491",
+        "license": "ODbL-1.0 (https://www.openstreetmap.org/copyright)",
+        "attribution": "© OpenStreetMap contributors",
+        "retrievedAt": "2026-11-16T14:11:07.427Z"
+      },
+      "sourceIds": [
+        "osm:relation/17366491"
+      ],
+      "updatedAt": "2026-11-16T14:11:07.427Z",
+      "confidence": 0.68,
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.2424674,
+          50.3005905
+        ]
+      }
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "id": "2c9ed40e-be2b-4f4f-80b5-ea3c1d032d33",
+  "startedAt": "2026-11-16T14:11:07.149Z",
+  "completedAt": "2026-11-16T14:11:07.537Z",
+  "sources": [
+    "osm"
+  ],
+  "fetched": 87,
+  "accepted": 82,
+  "rejected": 0,
+  "reviewed": 53,
+  "deduplicated": 5,
+  "errors": [],
+  "status": "succeeded"
+}
