@@ -90,7 +90,25 @@ export const versionSchema = z.object({
   counts: z.object({
     places: z.number().int().nonnegative(),
     events: z.number().int().nonnegative(),
-  }),
+  }).extend({ alerts: z.number().int().nonnegative().optional() }),
+  alerts: z.string().optional(),
+});
+
+export const localAlertSchema = z.object({
+  id: z.string().min(1),
+  category: z.enum(['transport', 'roads', 'water', 'electricity', 'heating', 'weather', 'municipal', 'other']),
+  title: z.string().min(1),
+  summary: z.string().min(1),
+  status: z.enum(['planned', 'ongoing', 'resolved', 'cancelled', 'unknown']),
+  severity: z.enum(['info', 'warning', 'critical']),
+  publishedAt: z.string().datetime({ offset: true }).nullable(),
+  updatedAt: z.string().datetime({ offset: true }),
+  startsAt: z.string().datetime({ offset: true }).nullable(),
+  endsAt: z.string().datetime({ offset: true }).nullable(),
+  source: z.object({ provider: z.string().min(1), externalId: z.string().nullable(), url: z.string().url(), fetchedAt: z.string().datetime({ offset: true }), attribution: z.string().optional() }),
+  location: z.object({ areaIds: z.array(z.string()), streetIds: z.array(z.string()), stopIds: z.array(z.string()), routeIds: z.array(z.string()), geometry: z.unknown().nullable(), scope: z.enum(['street', 'district', 'city', 'region', 'unknown']) }),
+  relevance: z.object({ confirmed: z.boolean(), reason: z.string().min(1) }),
+  lastVerifiedAt: z.string().datetime({ offset: true }),
 });
 export const importRunSchema = z.object({
   id: z.string(),
@@ -108,6 +126,7 @@ export const importRunSchema = z.object({
 
 export type EnginePlace = z.infer<typeof placeSchema>;
 export type EngineEvent = z.infer<typeof eventSchema>;
+export type EngineAlert = z.infer<typeof localAlertSchema>;
 export type DataSource = z.infer<typeof dataSourceSchema>;
 export type DataVersion = z.infer<typeof versionSchema>;
 export type ImportRun = z.infer<typeof importRunSchema>;
