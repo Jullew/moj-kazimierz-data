@@ -14,3 +14,6 @@ await copyFile(path.join(outputDir, 'sources.json'), path.join(deployDir, 'sourc
 for (const name of ['places.json', 'events.json', 'diff.json']) {
   await copyFile(path.join(versionDir, name), path.join(deployVersionDir, name));
 }
+if (manifest.alerts) {
+  await copyFile(path.join(versionDir, 'alerts.json'), path.join(deployVersionDir, 'alerts.json'));
+}

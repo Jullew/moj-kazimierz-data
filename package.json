@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "data:import": "tsx data-engine/pipeline.ts",
+    "data:import:alerts": "tsx data-engine/pipeline.ts --source=alerts",
     "prepare:pages": "node scripts/prepare-pages.mjs"
   },
   "dependencies": {

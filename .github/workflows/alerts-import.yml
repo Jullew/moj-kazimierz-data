@@ -1,0 +1,50 @@
+name: Import and publish local alerts
+
+on:
+  schedule:
+    # Hourly refresh; GitHub Actions scheduling is best-effort, not real-time.
+    - cron: '0 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/alerts-import.yml'
+      - '.github/workflows/data-import.yml'
+      - 'data-engine/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'scripts/prepare-pages.mjs'
+
+concurrency:
+  group: catalog-publish-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Set public catalog URL
+        run: echo "DATA_PUBLIC_URL=https://${GITHUB_REPOSITORY_OWNER}.github.io/moj-kazimierz-data" >> "$GITHUB_ENV"
+      - name: Import ZTM, water, city and IMGW alerts
+        run: pnpm data:import:alerts
+      - name: Prepare public files
+        run: pnpm prepare:pages
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+      - uses: actions/deploy-pages@v4

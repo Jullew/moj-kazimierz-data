@@ -9,12 +9,19 @@ import { fetchPokEvents } from './sources/pok.js';
 import { fetchPokSystemEvents } from './sources/pok-system.js';
 import {
   eventSchema,
+  localAlertSchema,
   placeSchema,
   versionSchema,
+  type EngineAlert,
   type EngineEvent,
   type EnginePlace,
 } from './schemas.js';
 import { diffRecords, isPublishableEvent, mergeEvents, mergePlaces } from './merge.js';
+import { fetchZtmAlerts } from './sources/alerts/ztm.js';
+import { fetchWaterAlerts } from './sources/alerts/water.js';
+import { fetchSosnowiecAlerts } from './sources/alerts/sosnowiec.js';
+import { fetchImgwAlerts } from './sources/alerts/imgw.js';
+import { mergeAlerts } from './pipeline/alerts/lifecycle.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outputDir = path.join(root, 'data-engine', 'output');
@@ -39,10 +46,13 @@ async function run() {
   let fetched = 0;
   let places: EnginePlace[] = [];
   let events: EngineEvent[] = [];
+  let alerts: EngineAlert[] = [];
+  const refreshedAlertProviders: string[] = [];
   const wantPlaces = selected === 'all' || selected === 'osm';
   const wantPok = selected === 'all' || selected === 'pok';
   const wantPokSystem = selected === 'all' || selected === 'pok-system';
-  if (!wantPlaces && !wantPok && !wantPokSystem && selected !== 'manual')
+  const wantAlerts = selected === 'all' || selected === 'alerts';
+  if (!wantPlaces && !wantPok && !wantPokSystem && !wantAlerts && selected !== 'manual')
     throw new Error(`Unknown source: ${selected}`);
   try {
     if (wantPlaces) {
@@ -78,7 +88,21 @@ async function run() {
         errors.push(`System POK: ${error instanceof Error ? error.message : String(error)}`);
       }
     }
-    if (!places.length && !events.length) {
+    if (wantAlerts) {
+      for (const [name, provider, host, importer] of [['ZTM', 'Zarząd Transportu Metropolitalnego', 'rj.transportgzm.pl', fetchZtmAlerts], ['Wodociągi', 'Sosnowieckie Wodociągi', 'rpwik.sosnowiec.pl', fetchWaterAlerts], ['Urząd Miasta Sosnowiec', 'Urząd Miasta Sosnowiec', 'sosnowiec.pl', fetchSosnowiecAlerts], ['IMGW', 'IMGW-PIB', 'danepubliczne.imgw.pl', fetchImgwAlerts]] as const) {
+        try {
+          const records = await importer();
+          alerts.push(...records);
+          refreshedAlertProviders.push(provider);
+          refreshedAlertProviders.push(host);
+          fetched += records.length;
+        } catch (error) {
+          if (selected !== 'all') throw error;
+          errors.push(`${name}: ${error instanceof Error ? error.message : String(error)}`);
+        }
+      }
+    }
+    if (!places.length && !events.length && !alerts.length && selected !== 'alerts') {
       throw new Error(
         'No source returned publishable records; refusing to publish an empty catalog.',
       );
@@ -94,7 +118,7 @@ async function run() {
       fetched = places.length + events.length;
       if (!fetched) throw new Error('Manual import contains no records');
     }
-    const counts = await publish({ runId, startedAt, selected, places, events, fetched, errors });
+    const counts = await publish({ runId, startedAt, selected, places, events, alerts, refreshedAlertProviders, fetched, errors });
     const report = {
       id: runId,
       startedAt,
@@ -140,31 +164,37 @@ async function publish(input: {
   selected: string;
   places: EnginePlace[];
   events: EngineEvent[];
+  alerts: EngineAlert[];
+  refreshedAlertProviders: string[];
   fetched: number;
   errors: string[];
 }): Promise<{ accepted: number; rejected: number; reviewed: number; deduplicated: number }> {
   await mkdir(outputDir, { recursive: true });
   let previousPlacesRaw = await readPrevious(path.join(outputDir, 'latest-places.json'));
   let previousEventsRaw = await readPrevious(path.join(outputDir, 'latest-events.json'));
+  let previousAlertsRaw = await readPrevious(path.join(outputDir, 'latest-alerts.json')) ?? [];
   if (process.env.DATA_PUBLIC_URL) {
     const base = process.env.DATA_PUBLIC_URL.replace(/\/$/, '');
     const manifestResponse = await fetch(`${base}/manifest.json`);
     if (manifestResponse.ok) {
       const remote = versionSchema.parse(await manifestResponse.json());
-      const [remotePlaces, remoteEvents] = await Promise.all([
+      const [remotePlaces, remoteEvents, remoteAlerts] = await Promise.all([
         fetch(new URL(remote.places, `${base}/`)).then((response) =>
           response.ok ? response.json() : Promise.reject(new Error('remote places unavailable')),
         ),
         fetch(new URL(remote.events, `${base}/`)).then((response) =>
           response.ok ? response.json() : Promise.reject(new Error('remote events unavailable')),
         ),
+        remote.alerts ? fetch(new URL(remote.alerts, `${base}/`)).then((response) => response.ok ? response.json() : Promise.reject(new Error('remote alerts unavailable'))) : Promise.resolve([]),
       ]);
       previousPlacesRaw = remotePlaces;
       previousEventsRaw = remoteEvents;
+      previousAlertsRaw = remoteAlerts;
       const previousVersionDir = path.join(outputDir, 'versions', remote.version);
       await mkdir(previousVersionDir, { recursive: true });
       await writeFile(path.join(previousVersionDir, 'places.json'), JSON.stringify(remotePlaces));
       await writeFile(path.join(previousVersionDir, 'events.json'), JSON.stringify(remoteEvents));
+      await writeFile(path.join(previousVersionDir, 'alerts.json'), JSON.stringify(remoteAlerts));
     } else if (input.selected !== 'all' && manifestResponse.status !== 404) {
       throw new Error(
         'Could not load the last published catalog; partial import aborted to protect the other source.',
@@ -175,7 +205,8 @@ async function publish(input: {
   }
   const previousPlaces = placeSchema.array().safeParse(previousPlacesRaw ?? []);
   const previousEvents = eventSchema.array().safeParse(previousEventsRaw ?? []);
-  if (input.selected !== 'all' && (!previousPlaces.success || !previousEvents.success)) {
+  const previousAlerts = localAlertSchema.array().safeParse(previousAlertsRaw ?? []);
+  if (input.selected !== 'all' && (!previousPlaces.success || !previousEvents.success || !previousAlerts.success)) {
     throw new Error('Previous catalog is missing or invalid; partial import aborted.');
   }
   if (
@@ -199,13 +230,15 @@ async function publish(input: {
     ...(previousEvents.success ? previousEvents.data : []),
     ...uniquePublishableEvents,
   ]);
+  const retainedAlerts = (previousAlerts.success ? previousAlerts.data : []).filter((alert) => !input.refreshedAlertProviders.some((token) => alert.source.provider === token || new URL(alert.source.url).hostname === token || new URL(alert.source.url).hostname.endsWith(`.${token}`)));
+  const mergedAlerts = mergeAlerts([...retainedAlerts, ...input.alerts], new Date(input.startedAt));
   const eventDeduplicated = Math.max(
     candidateDuplicates,
     publishableEvents.length - Math.max(0, mergedEvents.length - previousEventCount),
   );
   const placeDeduplicated = input.places.length - importedPlaces.length;
   const deduplicated = eventDeduplicated + placeDeduplicated;
-  const rejected = input.fetched - input.places.length - publishableEvents.length;
+  const rejected = input.fetched - input.places.length - publishableEvents.length - input.alerts.length;
   const reviewed =
     mergedPlaces.filter((place) => place.confidence < 0.72).length +
     input.events.filter(
@@ -236,17 +269,20 @@ async function publish(input: {
   const diff = {
     places: diffRecords(previousPlaces.success ? previousPlaces.data : [], input.places),
     events: diffRecords(previousEvents.success ? previousEvents.data : [], input.events),
+    alerts: diffRecords(previousAlerts.success ? previousAlerts.data : [], mergedAlerts),
   };
   // Publication receives only schema-valid records; every file is fully staged before the manifest pointer changes.
   const validPlaces = placeSchema.array().parse(mergedPlaces);
   const validEvents = eventSchema.array().parse(mergedEvents);
+  const validAlerts = localAlertSchema.array().parse(mergedAlerts);
   const stamp = new Date().toISOString();
-  const version = `${stamp.slice(0, 10).replaceAll('-', '')}-${hash({ places: validPlaces, events: validEvents, sources: SOURCES }).slice(0, 12)}`;
+  const version = `${stamp.slice(0, 10).replaceAll('-', '')}-${hash({ places: validPlaces, events: validEvents, alerts: validAlerts, sources: SOURCES }).slice(0, 12)}`;
   const versionDir = path.join(outputDir, 'versions', version);
   const stageDir = path.join(outputDir, '.stage', input.runId);
   await mkdir(stageDir, { recursive: true });
   await writeFile(path.join(stageDir, 'places.json'), JSON.stringify(validPlaces));
   await writeFile(path.join(stageDir, 'events.json'), JSON.stringify(validEvents));
+  await writeFile(path.join(stageDir, 'alerts.json'), JSON.stringify(validAlerts));
   await writeFile(path.join(stageDir, 'review.json'), JSON.stringify(review, null, 2));
   await writeFile(path.join(stageDir, 'diff.json'), JSON.stringify(diff, null, 2));
   await writeFile(path.join(stageDir, 'sources.json'), JSON.stringify(SOURCES, null, 2));
@@ -257,10 +293,11 @@ async function publish(input: {
     places: `versions/${version}/places.json`,
     events: `versions/${version}/events.json`,
     diff: `versions/${version}/diff.json`,
-    counts: { places: validPlaces.length, events: validEvents.length },
+    counts: { places: validPlaces.length, events: validEvents.length, alerts: validAlerts.length },
+    alerts: `versions/${version}/alerts.json`,
   });
   const counts = {
-    accepted: importedPlaces.length + uniquePublishableEvents.length,
+    accepted: importedPlaces.length + uniquePublishableEvents.length + input.alerts.length,
     rejected,
     reviewed,
     deduplicated,
@@ -297,10 +334,12 @@ async function publish(input: {
   // Legacy latest copies let subsequent scheduled runs merge without reading the manifest.
   await writeFile(path.join(outputDir, 'latest-places.json.tmp'), JSON.stringify(validPlaces));
   await writeFile(path.join(outputDir, 'latest-events.json.tmp'), JSON.stringify(validEvents));
+  await writeFile(path.join(outputDir, 'latest-alerts.json.tmp'), JSON.stringify(validAlerts));
   await rename(
     path.join(outputDir, 'latest-places.json.tmp'),
     path.join(outputDir, 'latest-places.json'),
   );
+  await rename(path.join(outputDir, 'latest-alerts.json.tmp'), path.join(outputDir, 'latest-alerts.json'));
   await rename(
     path.join(outputDir, 'latest-events.json.tmp'),
     path.join(outputDir, 'latest-events.json'),
