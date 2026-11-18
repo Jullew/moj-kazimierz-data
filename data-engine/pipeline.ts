@@ -22,6 +22,7 @@ import { fetchWaterAlerts } from './sources/alerts/water.js';
 import { fetchSosnowiecAlerts } from './sources/alerts/sosnowiec.js';
 import { fetchImgwAlerts } from './sources/alerts/imgw.js';
 import { mergeAlerts } from './pipeline/alerts/lifecycle.js';
+import { collectPlaceNews, placeNewsPublicationSchema, type PlaceNewsPublication } from './place-news.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const outputDir = path.join(root, 'data-engine', 'output');
@@ -52,7 +53,8 @@ async function run() {
   const wantPok = selected === 'all' || selected === 'pok';
   const wantPokSystem = selected === 'all' || selected === 'pok-system';
   const wantAlerts = selected === 'all' || selected === 'alerts';
-  if (!wantPlaces && !wantPok && !wantPokSystem && !wantAlerts && selected !== 'manual')
+  const wantPlaceNews = selected === 'all' || selected === 'place-news';
+  if (!wantPlaces && !wantPok && !wantPokSystem && !wantAlerts && !wantPlaceNews && selected !== 'manual')
     throw new Error(`Unknown source: ${selected}`);
   try {
     if (wantPlaces) {
@@ -102,7 +104,7 @@ async function run() {
         }
       }
     }
-    if (!places.length && !events.length && !alerts.length && selected !== 'alerts') {
+  if (!places.length && !events.length && !alerts.length && selected !== 'alerts' && selected !== 'place-news') {
       throw new Error(
         'No source returned publishable records; refusing to publish an empty catalog.',
       );
@@ -173,12 +175,13 @@ async function publish(input: {
   let previousPlacesRaw = await readPrevious(path.join(outputDir, 'latest-places.json'));
   let previousEventsRaw = await readPrevious(path.join(outputDir, 'latest-events.json'));
   let previousAlertsRaw = await readPrevious(path.join(outputDir, 'latest-alerts.json')) ?? [];
+  let previousNews: PlaceNewsPublication = { updates: [], sources: [] };
   if (process.env.DATA_PUBLIC_URL) {
     const base = process.env.DATA_PUBLIC_URL.replace(/\/$/, '');
     const manifestResponse = await fetch(`${base}/manifest.json`);
     if (manifestResponse.ok) {
       const remote = versionSchema.parse(await manifestResponse.json());
-      const [remotePlaces, remoteEvents, remoteAlerts] = await Promise.all([
+      const [remotePlaces, remoteEvents, remoteAlerts, remoteUpdates, remoteNewsSources] = await Promise.all([
         fetch(new URL(remote.places, `${base}/`)).then((response) =>
           response.ok ? response.json() : Promise.reject(new Error('remote places unavailable')),
         ),
@@ -186,7 +189,11 @@ async function publish(input: {
           response.ok ? response.json() : Promise.reject(new Error('remote events unavailable')),
         ),
         remote.alerts ? fetch(new URL(remote.alerts, `${base}/`)).then((response) => response.ok ? response.json() : Promise.reject(new Error('remote alerts unavailable'))) : Promise.resolve([]),
+        remote.placeUpdates ? fetch(new URL(remote.placeUpdates, `${base}/`)).then((response) => response.ok ? response.json() : Promise.reject(new Error('remote place updates unavailable'))) : Promise.resolve([]),
+        remote.placeNewsSources ? fetch(new URL(remote.placeNewsSources, `${base}/`)).then((response) => response.ok ? response.json() : Promise.reject(new Error('remote place news sources unavailable'))) : Promise.resolve([]),
       ]);
+      if (Boolean(remote.placeUpdates) !== Boolean(remote.placeNewsSources)) throw new Error('Incomplete remote place news manifest');
+      previousNews = placeNewsPublicationSchema.parse({ updates: remoteUpdates, sources: remoteNewsSources });
       previousPlacesRaw = remotePlaces;
       previousEventsRaw = remoteEvents;
       previousAlertsRaw = remoteAlerts;
@@ -195,6 +202,10 @@ async function publish(input: {
       await writeFile(path.join(previousVersionDir, 'places.json'), JSON.stringify(remotePlaces));
       await writeFile(path.join(previousVersionDir, 'events.json'), JSON.stringify(remoteEvents));
       await writeFile(path.join(previousVersionDir, 'alerts.json'), JSON.stringify(remoteAlerts));
+      if (remote.placeUpdates && remote.placeNewsSources) {
+        await writeFile(path.join(previousVersionDir, 'place-updates.json'), JSON.stringify(remoteUpdates));
+        await writeFile(path.join(previousVersionDir, 'place-news-sources.json'), JSON.stringify(remoteNewsSources));
+      }
     } else if (input.selected !== 'all' && manifestResponse.status !== 404) {
       throw new Error(
         'Could not load the last published catalog; partial import aborted to protect the other source.',
@@ -206,6 +217,16 @@ async function publish(input: {
   const previousPlaces = placeSchema.array().safeParse(previousPlacesRaw ?? []);
   const previousEvents = eventSchema.array().safeParse(previousEventsRaw ?? []);
   const previousAlerts = localAlertSchema.array().safeParse(previousAlertsRaw ?? []);
+  if (!process.env.DATA_PUBLIC_URL) {
+    const localManifest = versionSchema.safeParse(await readPrevious(path.join(outputDir, 'manifest.json')));
+    if (localManifest.success && localManifest.data.placeUpdates && localManifest.data.placeNewsSources) {
+      const [updates, sources] = await Promise.all([
+        readPrevious(path.join(outputDir, localManifest.data.placeUpdates)),
+        readPrevious(path.join(outputDir, localManifest.data.placeNewsSources)),
+      ]);
+      previousNews = placeNewsPublicationSchema.parse({ updates, sources });
+    }
+  }
   if (input.selected !== 'all' && (!previousPlaces.success || !previousEvents.success || !previousAlerts.success)) {
     throw new Error('Previous catalog is missing or invalid; partial import aborted.');
   }
@@ -276,13 +297,33 @@ async function publish(input: {
   const validEvents = eventSchema.array().parse(mergedEvents);
   const validAlerts = localAlertSchema.array().parse(mergedAlerts);
   const stamp = new Date().toISOString();
-  const version = `${stamp.slice(0, 10).replaceAll('-', '')}-${hash({ places: validPlaces, events: validEvents, alerts: validAlerts, sources: SOURCES }).slice(0, 12)}`;
+  const { publication: placeNews, report: placeNewsReport } = await collectPlaceNews(
+    previousNews,
+    new Set([
+      ...validPlaces.map((place) => place.id),
+      'osm-way-184660278',
+      'orsip-library-0000000000591',
+      'osm-way-150619640',
+      'osm-way-375565185',
+      'overture-d3a1069d-d569-4581-a359-01a52df81f20',
+      'overture-471855e8-b50d-43e1-ba56-401d7c8cae06',
+      'overture-2fa12f37-21be-42ae-8a25-d2d364316986',
+      'osm-way-183990583',
+      'overture-2fc26961-ba37-450e-9250-387680b9a141',
+      'overture-7c0c3ca9-fd96-44ee-8fe4-876085af04af',
+    ]),
+    stamp,
+  );
+  input.errors.push(...placeNewsReport.filter((source) => source.status === 'unavailable').map((source) => `${source.id}: ${source.error}`));
+  const version = `${stamp.slice(0, 10).replaceAll('-', '')}-${hash({ places: validPlaces, events: validEvents, alerts: validAlerts, placeNews, sources: SOURCES }).slice(0, 12)}`;
   const versionDir = path.join(outputDir, 'versions', version);
   const stageDir = path.join(outputDir, '.stage', input.runId);
   await mkdir(stageDir, { recursive: true });
   await writeFile(path.join(stageDir, 'places.json'), JSON.stringify(validPlaces));
   await writeFile(path.join(stageDir, 'events.json'), JSON.stringify(validEvents));
   await writeFile(path.join(stageDir, 'alerts.json'), JSON.stringify(validAlerts));
+  await writeFile(path.join(stageDir, 'place-updates.json'), JSON.stringify(placeNews.updates));
+  await writeFile(path.join(stageDir, 'place-news-sources.json'), JSON.stringify(placeNews.sources));
   await writeFile(path.join(stageDir, 'review.json'), JSON.stringify(review, null, 2));
   await writeFile(path.join(stageDir, 'diff.json'), JSON.stringify(diff, null, 2));
   await writeFile(path.join(stageDir, 'sources.json'), JSON.stringify(SOURCES, null, 2));
@@ -293,8 +334,10 @@ async function publish(input: {
     places: `versions/${version}/places.json`,
     events: `versions/${version}/events.json`,
     diff: `versions/${version}/diff.json`,
-    counts: { places: validPlaces.length, events: validEvents.length, alerts: validAlerts.length },
+    counts: { places: validPlaces.length, events: validEvents.length, alerts: validAlerts.length, placeUpdates: placeNews.updates.length },
     alerts: `versions/${version}/alerts.json`,
+    placeUpdates: `versions/${version}/place-updates.json`,
+    placeNewsSources: `versions/${version}/place-news-sources.json`,
   });
   const counts = {
     accepted: importedPlaces.length + uniquePublishableEvents.length + input.alerts.length,
@@ -310,6 +353,8 @@ async function publish(input: {
     fetched: input.fetched,
     ...counts,
     errors: input.errors,
+    placeNews: placeNewsReport,
+    copiedNewsImages: 0,
     status: 'succeeded',
   };
   await writeFile(path.join(stageDir, 'run.json'), JSON.stringify(runReport, null, 2));

@@ -90,8 +90,10 @@ export const versionSchema = z.object({
   counts: z.object({
     places: z.number().int().nonnegative(),
     events: z.number().int().nonnegative(),
-  }).extend({ alerts: z.number().int().nonnegative().optional() }),
+  }).extend({ alerts: z.number().int().nonnegative().optional(), placeUpdates: z.number().int().nonnegative().optional() }),
   alerts: z.string().optional(),
+  placeUpdates: z.string().optional(),
+  placeNewsSources: z.string().optional(),
 });
 
 export const localAlertSchema = z.object({
