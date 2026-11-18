@@ -120,6 +120,22 @@ function htmlText(value: string) {
   return cheerio.load(value).text().replace(/\s+/gu, ' ').replace(/[\p{Cc}<>]/gu, ' ').replace(/\s+/gu, ' ').trim();
 }
 
+function extractArticleMedia(value: string, sourceUrl: string, expectedHost: string) {
+  const $ = cheerio.load(value);
+  const urls = new Set<string>();
+  $('img').each((_, image) => {
+    const node = $(image);
+    const raw = node.attr('data-src') || node.attr('data-lazy-src') || node.attr('src');
+    if (!raw || raw.startsWith('data:')) return;
+    try {
+      const url = new URL(raw, sourceUrl);
+      if (url.protocol === 'http:' && url.hostname.replace(/^www\./, '') === expectedHost) url.protocol = 'https:';
+      if (url.protocol === 'https:' && url.hostname.replace(/^www\./, '') === expectedHost) urls.add(canonicalize(url.href));
+    } catch { /* Ignore malformed or untrusted image URLs. */ }
+  });
+  return [...urls].slice(0, 8);
+}
+
 async function fetchSource(source: (typeof placeNewsSources)[number], now: string) {
   const response = await fetch(source.feedUrl, {
     headers: { 'user-agent': 'MojKazimierzDataEngine/0.1 (source and original links retained)' },
@@ -232,7 +248,10 @@ async function fetchSource(source: (typeof placeNewsSources)[number], now: strin
     const keywords = 'filterKeywords' in source ? source.filterKeywords : [];
     const searchable = `${title} ${htmlText(description)} ${htmlText(encoded)}`.toLocaleLowerCase('pl-PL');
     if (keywords.length && !keywords.some((keyword) => searchable.includes(keyword.toLocaleLowerCase('pl-PL')))) return [];
-    const summary = htmlText(description || encoded).slice(0, 350) || null;
+    const content = encoded || description;
+    const article = htmlText(content).slice(0, 30_000) || null;
+    const summary = (article || htmlText(description)).slice(0, 350) || null;
+    const imageUrls = extractArticleMedia(content, sourceUrl, expectedHost);
     const type = /komunikat|ogłoszen|informacja/iu.test(title) ? 'notice' : /wydarzen|festyn|spotkan|konkurs|zawod|turniej/iu.test(title) ? 'event' : 'news';
     return [{
       id: createHash('sha256').update(identity({ placeId: source.placeId, canonicalUrl: sourceUrl })).digest('hex'),
@@ -240,8 +259,8 @@ async function fetchSource(source: (typeof placeNewsSources)[number], now: strin
       type,
       title,
       summary,
-      article: null,
-      imageUrls: [],
+      article,
+      imageUrls,
       publishedAt,
       sourceId: source.id,
       sourceUrl,
@@ -250,7 +269,7 @@ async function fetchSource(source: (typeof placeNewsSources)[number], now: strin
       status: 'published' as const,
     } satisfies RawFeedUpdate];
   });
-  return rows.map((update) => ({ ...update, article: null, imageUrls: [] }));
+  return rows;
 }
 
 export async function collectPlaceNews(previous: PlaceNewsPublication, placeIds: Set<string>, now: string) {
@@ -283,7 +302,7 @@ export async function collectPlaceNews(previous: PlaceNewsPublication, placeIds:
   for (const update of updates.sort((a, b) => Date.parse(b.publishedAt ?? b.fetchedAt) - Date.parse(a.publishedAt ?? a.fetchedAt))) {
     if (!unique.has(identity(update))) unique.set(identity(update), update);
   }
-  const attributedUpdates = [...unique.values()].map((update) => ({ ...update, article: null, imageUrls: [] }));
+  const attributedUpdates = [...unique.values()];
   return { publication: placeNewsPublicationSchema.parse({ updates: attributedUpdates, sources: sourceStates }), report };
 }
 

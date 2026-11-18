@@ -319,15 +319,11 @@ async function publish(input: {
   const versionDir = path.join(outputDir, 'versions', version);
   const stageDir = path.join(outputDir, '.stage', input.runId);
   await mkdir(stageDir, { recursive: true });
-  const placeNewsForPublish = {
-    ...placeNews,
-    updates: placeNews.updates.map((update) => ({ ...update, article: null, imageUrls: [] })),
-  };
   await writeFile(path.join(stageDir, 'places.json'), JSON.stringify(validPlaces));
   await writeFile(path.join(stageDir, 'events.json'), JSON.stringify(validEvents));
   await writeFile(path.join(stageDir, 'alerts.json'), JSON.stringify(validAlerts));
-  await writeFile(path.join(stageDir, 'place-updates.json'), JSON.stringify(placeNewsForPublish.updates));
-  await writeFile(path.join(stageDir, 'place-news-sources.json'), JSON.stringify(placeNewsForPublish.sources));
+  await writeFile(path.join(stageDir, 'place-updates.json'), JSON.stringify(placeNews.updates));
+  await writeFile(path.join(stageDir, 'place-news-sources.json'), JSON.stringify(placeNews.sources));
   await writeFile(path.join(stageDir, 'review.json'), JSON.stringify(review, null, 2));
   await writeFile(path.join(stageDir, 'diff.json'), JSON.stringify(diff, null, 2));
   await writeFile(path.join(stageDir, 'sources.json'), JSON.stringify(SOURCES, null, 2));
