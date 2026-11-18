@@ -11,7 +11,7 @@ on:
         type: choice
         required: true
         default: all
-        options: [all, osm, pok, pok-system, alerts]
+        options: [all, osm, pok, pok-system, alerts, place-news]
 
 concurrency:
   group: catalog-publish-${{ github.ref }}
