@@ -125,13 +125,24 @@ function extractArticleMedia(value: string, sourceUrl: string, expectedHost: str
   const urls = new Set<string>();
   $('img').each((_, image) => {
     const node = $(image);
-    const raw = node.attr('data-src') || node.attr('data-lazy-src') || node.attr('src');
-    if (!raw || raw.startsWith('data:')) return;
-    try {
-      const url = new URL(raw, sourceUrl);
-      if (url.protocol === 'http:' && url.hostname.replace(/^www\./, '') === expectedHost) url.protocol = 'https:';
-      if (url.protocol === 'https:' && url.hostname.replace(/^www\./, '') === expectedHost) urls.add(canonicalize(url.href));
-    } catch { /* Ignore malformed or untrusted image URLs. */ }
+    const imageLink = node.closest('a').attr('href');
+    const linkedImage = imageLink && /\.(?:avif|gif|jpe?g|png|webp)(?:[?#]|$)/iu.test(imageLink) ? imageLink : undefined;
+    const srcSet = (node.attr('srcset') || node.attr('data-srcset') || '')
+      .split(',')
+      .map((candidate) => candidate.trim().split(/\s+/u))
+      .sort((a, b) => Number.parseInt(b[1] ?? '0', 10) - Number.parseInt(a[1] ?? '0', 10))[0]?.[0];
+    const candidates = [linkedImage, srcSet, node.attr('data-src'), node.attr('data-lazy-src'), node.attr('src')];
+    for (const raw of candidates) {
+      if (!raw || raw.startsWith('data:')) continue;
+      try {
+        const url = new URL(raw, sourceUrl);
+        if (url.protocol === 'http:' && url.hostname.replace(/^www\./, '') === expectedHost) url.protocol = 'https:';
+        if (url.protocol === 'https:' && url.hostname.replace(/^www\./, '') === expectedHost) {
+          urls.add(canonicalize(url.href));
+          break;
+        }
+      } catch { /* Ignore malformed or untrusted image URLs. */ }
+    }
   });
   return [...urls].slice(0, 8);
 }
