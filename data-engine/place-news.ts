@@ -120,6 +120,23 @@ function htmlText(value: string) {
   return cheerio.load(value).text().replace(/\s+/gu, ' ').replace(/[\p{Cc}<>]/gu, ' ').replace(/\s+/gu, ' ').trim();
 }
 
+function formattedArticleText(value: string) {
+  const $ = cheerio.load(value);
+  $('script, style, noscript, iframe, svg').remove();
+  $('h1, h2, h3, h4, h5, h6').prepend('## ').append('\n\n');
+  $('li').prepend('• ').append('\n\n');
+  $('br').replaceWith('\n');
+  $('p, blockquote').append('\n\n');
+  return $.root().text()
+    .replace(/\r\n?/gu, '\n')
+    .replace(/\u00a0/gu, ' ')
+    .replace(/[ \t]+\n/gu, '\n')
+    .replace(/\n[ \t]+/gu, '\n')
+    .replace(/[ \t]{2,}/gu, ' ')
+    .replace(/\n{3,}/gu, '\n\n')
+    .trim();
+}
+
 function extractArticleMedia(value: string, sourceUrl: string, expectedHost: string) {
   const $ = cheerio.load(value);
   const urls = new Set<string>();
@@ -260,7 +277,7 @@ async function fetchSource(source: (typeof placeNewsSources)[number], now: strin
     const searchable = `${title} ${htmlText(description)} ${htmlText(encoded)}`.toLocaleLowerCase('pl-PL');
     if (keywords.length && !keywords.some((keyword) => searchable.includes(keyword.toLocaleLowerCase('pl-PL')))) return [];
     const content = encoded || description;
-    const article = htmlText(content).slice(0, 30_000) || null;
+    const article = formattedArticleText(content).slice(0, 30_000) || null;
     const summary = (article || htmlText(description)).slice(0, 350) || null;
     const imageUrls = extractArticleMedia(content, sourceUrl, expectedHost);
     const type = /komunikat|ogłoszen|informacja/iu.test(title) ? 'notice' : /wydarzen|festyn|spotkan|konkurs|zawod|turniej/iu.test(title) ? 'event' : 'news';
