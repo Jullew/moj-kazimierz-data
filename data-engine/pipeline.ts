@@ -99,9 +99,12 @@ async function run() {
           refreshedAlertProviders.push(host);
           fetched += records.length;
         } catch (error) {
-          if (selected !== 'all') throw error;
+          // Alert providers are independent. Keep the previous records for a failed provider and continue refreshing the rest.
           errors.push(`${name}: ${error instanceof Error ? error.message : String(error)}`);
         }
+      }
+      if (selected === 'alerts' && refreshedAlertProviders.length === 0) {
+        throw new Error(`All alert providers failed: ${errors.join('; ')}`);
       }
     }
   if (!places.length && !events.length && !alerts.length && selected !== 'alerts' && selected !== 'place-news') {
