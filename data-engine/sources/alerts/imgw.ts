@@ -10,9 +10,12 @@ export async function fetchImgwAlerts(options: { fetcher?: typeof fetch; now?: D
   const fetcher = options.fetcher ?? fetch;
   const fetchedAt = options.fetchedAt ?? new Date().toISOString();
   const data = await fetchJson(IMGW_URL, fetcher) as Warning[];
-  if (!Array.isArray(data)) throw new Error('IMGW warnings API returned an invalid list');
+  if (!Array.isArray(data)) {
+    if (isNoWarningsResponse(data)) return [];
+    throw new Error('IMGW warnings API returned an invalid list');
+  }
   return data.filter((warning) => {
-    const codes = Array.isArray(warning.teryt) ? warning.teryt : String(warning.teryt ?? '').split(/[;,\s]+/);
+    const codes = Array.isArray(warning.teryt) ? warning.teryt : String(warning.teryt ?? '').split(/[;,\\s]+/);
     return codes.includes('2475');
   }).map((warning) => {
     const startsAt = parseImgwDate(warning.obowiazuje_od);
@@ -41,9 +44,15 @@ export async function fetchImgwAlerts(options: { fetcher?: typeof fetch; now?: D
   });
 }
 
+function isNoWarningsResponse(value: unknown): boolean {
+  if (!value || typeof value !== 'object' || !('message' in value)) return false;
+  const message = value.message;
+  return typeof message === 'string' && message.trim() === 'Brak ostrzeżeń meteorologicznych';
+}
+
 function parseImgwDate(value?: string | null): string | null {
   if (!value) return null;
-  const match = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?$/.exec(value.trim());
+  const match = /^(\\d{4})-(\\d{2})-(\\d{2})[ T](\\d{2}):(\\d{2})(?::(\\d{2}))?$/.exec(value.trim());
   if (!match) return null;
   const [, year, month, day, hour, minute] = match;
   const iso = warsawLocalIso(Number(year), Number(month) - 1, Number(day), Number(hour), Number(minute));
